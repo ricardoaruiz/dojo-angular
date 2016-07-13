@@ -1,0 +1,37 @@
+<html ng-app="controleBranchs">
+<head>
+	<meta charset="UTF-8">
+	<title>Controle de branchs</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/config/routes.config.js"></script>
+	<script src="js/service/branchs.factory.js"></script>
+	<script src="js/service/status.service.js"></script>
+	<script src="js/value/config.value.js"></script>
+	<script src="js/directive/alert.directive.js"></script>
+	<script src="js/directive/data.directive.js"></script>
+	<script src="js/filter/comentario.filter.js"></script>
+	<script src="js/controller/busca.controller.js"></script>
+	<script src="js/controller/cadastro.controller.js"></script>
+	<script src="js/controller/detalhe.controller.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
+	<script src="js/interceptor/error.interceptor.js"></script>
+	<script src="js/interceptor/loading.interceptor.js"></script>
+	<script src="js/config/interceptors.config.js"></script>
+	
+	
+</head>
+<body>
+	<div class="jumbotron" ng-show="loading">
+		<h4>Loadeando....</h4>
+	</div>
+	<div class="jumbotron" ng-hide="loading">
+		<div ng-view></div>
+	</div>
+</body>
+</html>
+

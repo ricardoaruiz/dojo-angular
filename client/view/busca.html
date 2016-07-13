@@ -1,0 +1,26 @@
+<input class="form-control" type="text" ng-model="criterioBusca" placeholder="Qual branch você está buscando?" />
+<table class="table table-striped">
+	<tr>
+		<th></th>
+		<th><a href="" ng-click="ordernarPor('branch')">Branch</a></th>
+		<th><a href="" ng-click="ordernarPor('origem')">Origem</a></th>
+		<th>Status</th>
+		<th>Data de update</th>
+		<th>comentario</th>
+	</tr>
+	<tr ng-class="{'negrito' : branch.selecionado}" ng-repeat="branch in branchs | filter:criterioBusca | orderBy:criterioOrdenacao:direcao">
+		<td>
+			<input type="checkbox" ng-model="branch.selecionado" />
+		</td>
+		<td><a href ="#/detalhe/{{branch.id}}">{{branch.branch}}</a></td>
+		<td>{{branch.origem}}</td>
+		<td>{{branch.status.descricao}}</td>
+		<td>{{branch.data}}</td>
+		<td>{{branch.comentario | comentarioFilter:3}}</td>
+	</tr>
+</table>
+<hr/>
+
+
+<button class="btn btn-primary btn-block" ng-disabled="branchForm.$invalid" ng-click="adicionarBranch()">Adicionar Branch</button>
+<button class="btn btn-danger btn-block" ng-click="apagarBranch(branchs)" ng-if="hasSelectable(branchs)">Apagar Branchs</button>

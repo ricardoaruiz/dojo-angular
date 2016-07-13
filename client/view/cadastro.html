@@ -1,0 +1,27 @@
+<form name="branchForm">
+	<input class="form-control" type="text" ng-model="branch.branch" name="branch" placeholder="branch" ng-required="true" ng-pattern="/([A-Z]|[a-z])+\d*\/([A-Z]|[a-z])+\d*\/([A-Z]|[a-z])+-\d*/"
+	/>
+	<input class="form-control" type="text" ng-model="branch.origem" name="origem" placeholder="Origem" ng-required="true" />
+	<input class="form-control" type="text" ng-model="branch.comentario" name="comentario" placeholder="comentario" />
+	<input class="form-control" type="text" ng-model="branch.data" name="data" placeholder="data" ci-data/>
+	<select ng-model="branch.status" ng-options="status.descricao for status in statusList | orderBy:'ordem'" ng-required="true"
+	class="form-control">
+		<option value="">Selecione uma status</option>
+	</select>
+</form>
+
+<div ng-show="branchForm.branch.$dirty" ng-messages="branchForm.branch.$error">
+	<div ng-message="required" class="alert alert-danger">
+		Por favor, preencha o campo branch!
+	</div>
+	<div ng-message="pattern" class="alert alert-danger">
+		O campo branch deve ter o formato seguindo o exemplo fase3/sprint10/cd-7898.
+	</div>
+</div>
+
+<div ng-show="branchForm.origem.$error.required && branchForm.origem.$dirty" class="alert alert-danger">
+	Por favor, preencha o campo origem!
+</div>
+
+<button class="btn btn-primary btn-block" ng-disabled="branchForm.$invalid" ng-click="adicionarBranch(branch)">Adicionar Branch</button>
+<a href="#/busca" >Voltar</a>
